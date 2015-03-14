@@ -2,9 +2,11 @@ package com.fudfill.runner.slidingmenu;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,10 @@ import com.fudfill.runner.slidingmenu.adapter.CustomerOrderListAdapter;
 import com.fudfill.runner.slidingmenu.adapter.CustomerWaypointDetails;
 import com.fudfill.runner.slidingmenu.common.FileUtils;
 import com.fudfill.runner.slidingmenu.common.FudfillConfig;
+import com.fudfill.runner.slidingmenu.service.HTTPRequestService;
+import com.fudfill.runner.slidingmenu.service.HTTPRequestType;
+import com.fudfill.runner.slidingmenu.service.HTTPServiceResultReceiver;
+import com.fudfill.runner.slidingmenu.service.RunnerTaskReq;
 import com.fudfill.runner.slidingmenu.syncadapter.ServiceHandler;
 
 import org.json.JSONArray;
@@ -27,7 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ItemsListFragment extends Fragment {
+public class ItemsListFragment extends Fragment implements  HTTPServiceResultReceiver.Receiver{
     private List<CustomerWaypointDetails> wayPoints;
 
     // URL to get contacts JSON
@@ -35,6 +41,8 @@ public class ItemsListFragment extends Fragment {
     // private static String url = "http://128.199.242.169/fudfildelivery/testserver?file=orders";
     CustomerOrderListAdapter custOrderAdapter;
     public static GetOrdersList ordersSyncTask;
+
+    private HTTPServiceResultReceiver mReceiver;
 
 
     ProgressDialog pDialog;
@@ -72,6 +80,7 @@ public class ItemsListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_items,
                 container, false);
         refreshReq = getArguments().getBoolean("refresh");
+        fetchOrdersList();
         initData();
         ExpandableListView itemList = (ExpandableListView) rootView.findViewById(R.id.customerItemList);
         itemList.setIndicatorBounds(5, 5);
@@ -105,7 +114,8 @@ public class ItemsListFragment extends Fragment {
         wayPoints.add(wayPoint2);
         wayPoints.add(wayPoint3);
         wayPoints.add(wayPoint4);*/
-        new GetOrdersList().execute(null, null, null);
+        //new GetOrdersList().execute(null, null, null);
+        fetchOrdersList();
 
     }
 
@@ -128,6 +138,27 @@ public class ItemsListFragment extends Fragment {
         }
 
         return result;
+    }
+
+    private void fetchOrdersList()
+    {
+         /* Starting Download Service */
+        RunnerTaskReq runnerTaskReq = new RunnerTaskReq();
+        runnerTaskReq.setMethod(runnerTaskReq.GET);
+        runnerTaskReq.setUrl(FudfillConfig.getRunnersItemslistUrl());
+        runnerTaskReq.setReqType(HTTPRequestType.FETCH_ORDERS_LIST);
+
+        mReceiver = new HTTPServiceResultReceiver(new Handler());
+        mReceiver.setReceiver(this);
+        Intent intent = new Intent(Intent.ACTION_SYNC, null, getActivity(), HTTPRequestService.class);
+        intent.putExtra("request", runnerTaskReq);
+        getActivity().startService(intent);
+
+    }
+
+    @Override
+    public void onReceiveResult(int resultCode, Bundle resultData) {
+
     }
 
     /**

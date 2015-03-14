@@ -49,6 +49,11 @@
         <service
             android:name="com.fudfill.runner.slidingmenu.location.GPSRunnerTracker"
             android:enabled="true" />
+
+        <!-- Declaring Service in Manifest -->
+        <service
+            android:name="com.fudfill.runner.slidingmenu.service.HTTPRequestService"
+            android:exported="false" />
         <service
             android:name="com.fudfill.runner.slidingmenu.syncadapter.SyncService"
             android:exported="true" >
