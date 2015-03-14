@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/praveenthota/AndroidStudioProjects/RunnerAppLatest/RunnerApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/praveenthota/AndroidStudioProjects/RunnerAppLatest/RunnerApp/app/build/intermediates/pre-dexed/debug/classes-311f8170817dd296171b9d59009dc0325b97f813.jar" />
+    </item>
+    <item
+        jar="/Users/praveenthota/AndroidStudioProjects/RunnerAppLatest/RunnerApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/Users/praveenthota/AndroidStudioProjects/RunnerAppLatest/RunnerApp/app/build/intermediates/pre-dexed/debug/classes-4b5b7054cba2baa9c0c695651eeae3fc8d9a0ac8.jar" />
+    </item>
+    <item
+        jar="/Users/praveenthota/AndroidStudioProjects/RunnerAppLatest/RunnerApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/praveenthota/AndroidStudioProjects/RunnerAppLatest/RunnerApp/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-21593c5e3900328b2f7e2d25ef91893fa590b623.jar" />
+    </item>
+    <item
+        jar="/Users/praveenthota/Personal/ProjectWork/AndroidSDK/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/praveenthota/AndroidStudioProjects/RunnerAppLatest/RunnerApp/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-b1625ff02d85920a3e36f91c26150cb57d50928d.jar" />
+    </item>
+
+</items>
